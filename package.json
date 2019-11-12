@@ -1,0 +1,23 @@
+{
+  "name": "react-layout-element",
+  "version": "0.0.1",
+  "description": "Using Flutter layout widgets in React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangbinjie/react-layout-element.git"
+  },
+  "keywords": [
+    "react",
+    "layout"
+  ],
+  "author": "corol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huangbinjie/react-layout-element/issues"
+  },
+  "homepage": "https://github.com/huangbinjie/react-layout-element#readme"
+}
