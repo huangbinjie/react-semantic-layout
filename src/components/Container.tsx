@@ -1,21 +1,17 @@
 import React from 'react'
 import { detect } from 'detect-browser'
-import { Alignment, decodeAlignment } from './style'
+import { Alignment, decodeAlignment, LayoutStyle, LayoutStyleKey } from '../style'
+import { Constraint } from '../constraint'
 
 const browser = detect()
 const isIe = browser && browser.name === 'ie'
 
-export interface IContainer {
+export interface Container extends LayoutStyle {
   className?: string
-  color?: string
   children?: React.ReactNode
-  width?: string
-  height?: string
+  constraints?: Constraint
   alignment?: Alignment
-  margin?: string
-  padding?: string
-  shrinkWrap?: boolean
-  style?: React.CSSProperties
+  style?: Omit<React.CSSProperties, keyof LayoutStyle | keyof Constraint>
 }
 
 /**
@@ -26,7 +22,7 @@ export interface IContainer {
  *
  * @param props
  */
-export default function Container(props: IContainer) {
+export default function Container(props: Container) {
   const {
     color,
     width,
@@ -34,11 +30,12 @@ export default function Container(props: IContainer) {
     alignment = 'start',
     margin,
     padding,
-    shrinkWrap,
     style,
     children,
     ...restProps
   } = props
+
+  const shrinkWrap = children != void 0
 
   return (
     <div
@@ -48,6 +45,8 @@ export default function Container(props: IContainer) {
         display: shrinkWrap ? isIe ? '-ms-inline-flex' : 'inline-flex' : 'flex',
         flex: shrinkWrap ? 'none' : 1,
         justifyContent: decodeAlignment(alignment),
+        // shrinkWrap height
+        alignSelf: shrinkWrap ? 'baseline' : 'auto',
         width,
         height,
         margin,

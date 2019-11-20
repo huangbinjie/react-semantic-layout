@@ -1,3 +1,5 @@
+import css from 'csstype'
+
 export type Alignment = 'start' | 'center' | 'end' | 'between'
 
 export type Overflow = 'scroll' | 'hidden' | 'auto'
@@ -15,4 +17,12 @@ export function decodeAlignment(alignment: Alignment) {
     default:
       return 'unset'
   }
+}
+
+export type LayoutStyleKey = "width" | "height" | "margin" | "padding" | "color"
+
+export type LayoutStyle = Pick<css.Properties, LayoutStyleKey>
+
+export type ConstraintStyle = {
+
 }
