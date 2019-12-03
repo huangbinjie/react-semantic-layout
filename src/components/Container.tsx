@@ -1,4 +1,5 @@
 import React from 'react'
+import { Properties } from 'csstype'
 import { detect } from 'detect-browser'
 import { Alignment, decodeAlignment, LayoutStyle, LayoutStyleKey } from '../style'
 import { Constraint } from '../constraint'
@@ -11,7 +12,7 @@ export interface Container extends LayoutStyle {
   children?: React.ReactNode
   constraints?: Constraint
   alignment?: Alignment
-  style?: Omit<React.CSSProperties, keyof LayoutStyle | keyof Constraint>
+  style?: Omit<Properties, LayoutStyleKey | keyof Constraint>
 }
 
 /**

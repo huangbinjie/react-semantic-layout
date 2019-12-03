@@ -4,7 +4,10 @@
   "description": "Using Flutter layout widgets in React.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build",
+    "docz:serve": "docz build && docz serve"
   },
   "repository": {
     "type": "git",
@@ -22,8 +25,9 @@
   "homepage": "https://github.com/huangbinjie/react-layout-element#readme",
   "devDependencies": {
     "@types/react": "^16.9.11",
-    "react": "^16.11.0",
-    "docz": "^2.0.0-rc.74"
+    "docz": "latest",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "dependencies": {
     "csstype": "^2.6.7",
