@@ -8,18 +8,25 @@ const browser = detect()
 const isIe = browser && browser.name === 'ie'
 
 export interface Container extends LayoutStyle {
+  width?: string
+  height?: string
+  margin?: string
+  padding?: string
+  // 背景色
+  color?: string
+  alignment?: Alignment
   className?: string
   children?: React.ReactNode
   constraints?: Constraint
-  alignment?: Alignment
+  debuggerLabel?: string
   style?: Omit<Properties, LayoutStyleKey | keyof Constraint>
 }
 
 /**
  * 容器组件，提供丰富的布局效果。
  * to honor the `width`, `height`,
- * to expand to fit the parent,
- * to be as big as possible.
+ * to shrink to the children,
+ * to be as small as possible.
  *
  * @param props
  */
@@ -33,6 +40,7 @@ export default function Container(props: Container) {
     padding,
     style,
     children,
+    debuggerLabel = 'Container',
     ...restProps
   } = props
 
@@ -40,6 +48,7 @@ export default function Container(props: Container) {
 
   return (
     <div
+      debugger-label={debuggerLabel}
       {...restProps}
       style={{
         ...style,

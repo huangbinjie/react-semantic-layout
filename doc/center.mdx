@@ -1,25 +1,24 @@
 ---
-name: Container
-route: /container
+name: Center
+route: /center
 ---
 
 import { Playground, Props } from 'docz'
 import Container from '../src/components/Container'
+import Center from '../src/components/Center'
 
-## Container
+## Center
 
-容器。基础组件，提供各种布局效果。
-
-> 内部使用 flex 布局，搭配其他元素使用的时候需注意
+提供居中效果的组件。
 
 ### Basic
 
 <Playground>
   <Container width="100px" height="100px" color="#ececec">
-    展示一个方块
+    <Center>居中</Center>
   </Container>
 </Playground>
 
 ## Props
 
-<Props of={Container} />
+<Props of={Center} />
