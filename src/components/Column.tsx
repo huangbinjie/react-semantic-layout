@@ -1,7 +1,7 @@
 import React from 'react'
 import { Overflow } from '../style'
 
-export interface IColumn {
+export type ColumnProps = {
   className?: string
   overflow?: Overflow
 }
@@ -11,7 +11,7 @@ export interface IColumn {
  * 高宽默认占满父容器。
  * 默认占满父容器
  */
-export default function Column(props: React.PropsWithChildren<IColumn>) {
+export default function Column(props: React.PropsWithChildren<ColumnProps>) {
   const {
     children,
     overflow = 'hidden',

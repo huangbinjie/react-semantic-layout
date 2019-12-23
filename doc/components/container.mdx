@@ -1,0 +1,57 @@
+---
+name: Container
+route: /components/container
+---
+
+import { Playground, Props } from 'docz'
+import Container from '../../src/components/Container'
+
+## Container
+
+容器。基础组件，提供各种布局效果。
+
+有子组件的时候，Container 会收缩紧贴子组件的高宽。没有子组件的时候，Container 会尽可能的大以占满父容器。
+
+> 内部使用 flex 布局，搭配其他元素使用的时候需注意。
+
+## Usage
+
+### Basic
+
+<Playground>
+  <Container width="100px" height="100px" color="#ececec">
+    展示一个方块
+  </Container>
+</Playground>
+
+### 有子组件
+
+有子组件的时候， Container 会紧贴子组件。
+
+<Playground>
+  <Container color="#ececec">
+    展示一个方块
+  </Container>
+</Playground>
+
+### 没有子组件
+
+<Playground>
+  <Container width="100px" height="100px">
+    <Container color="#ececec"></Container>
+  </Container>
+</Playground>
+
+### 约束
+
+约束
+
+<Playground>
+  <Container constraints={{maxWidth: '100px', maxHeight: '100px'}} width="200px" height="200px" color="#ececec">
+    展示一个方块
+  </Container>
+</Playground>
+
+## Props
+
+<Props of={Container} />

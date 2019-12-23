@@ -32,6 +32,7 @@ export interface Container extends LayoutStyle {
  */
 export default function Container(props: Container) {
   const {
+    constraints = { maxWidth: 'none', maxHeight: 'none', minWidth: 'none', minHeight: 'none' },
     color,
     width,
     height,
@@ -45,10 +46,11 @@ export default function Container(props: Container) {
   } = props
 
   const shrinkWrap = children != void 0
+  const { maxWidth = 'none', maxHeight = 'none', minWidth = 'none', minHeight = 'none' } = constraints
 
   return (
     <div
-      debugger-label={debuggerLabel}
+      debug-lable={debuggerLabel}
       {...restProps}
       style={{
         ...style,
@@ -61,9 +63,10 @@ export default function Container(props: Container) {
         height,
         margin,
         padding,
-        // flex 1 width 不生效，用约束让其生效
-        maxWidth: width,
-        maxHeight: height,
+        maxWidth: maxWidth,
+        maxHeight: maxHeight,
+        minWidth: minWidth,
+        minHeight: minHeight,
         backgroundColor: color
       }}
     >

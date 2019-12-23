@@ -1,0 +1,30 @@
+---
+name: Row
+route: /components/row
+---
+
+import { Playground, Props } from 'docz'
+import Container from '../../src/components/Container'
+import Row from '../../src/components/Row'
+import Center from '../../src/components/Center'
+
+## Row
+
+提供水平布局的组件。等价于 `flex-direction: horizontal`
+
+### Basic
+
+<Playground>
+  <Row>
+    <Container width="100px" height="100px" color="#ececec">
+      <Center>居中</Center>
+    </Container>
+    <Container width="100px" height="100px" color="blue">
+      <Center style={{color: "#fff"}}>居中</Center>
+    </Container>
+  </Row>
+</Playground>
+
+## Props
+
+<Props of={Row} />

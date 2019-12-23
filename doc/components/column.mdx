@@ -1,0 +1,30 @@
+---
+name: Column
+route: /components/column
+---
+
+import { Playground, Props } from 'docz'
+import Container from '../../src/components/Container'
+import Column from '../../src/components/Column'
+import Center from '../../src/components/Center'
+
+## Column
+
+提供垂直布局的组件。等价于 `flex-direction: vertical`
+
+### Basic
+
+<Playground>
+  <Column>
+    <Container width="100px" height="100px" color="#ececec">
+      <Center>居中</Center>
+    </Container>
+    <Container width="100px" height="100px" color="blue">
+      <Center style={{color: "#fff"}}>居中</Center>
+    </Container>
+  </Column>
+</Playground>
+
+## Props
+
+<Props of={Column} />
