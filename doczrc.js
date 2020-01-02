@@ -1,5 +1,6 @@
 export default {
-  files: 'doc/**/*.{md,markdown,mdx}',
+  files: 'src/**/*.mdx',
   typescript: true,
+  dest: 'docs'
   // or files: ['**/*.{md,markdown,mdx}']
 }
