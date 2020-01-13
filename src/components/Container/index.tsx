@@ -2,6 +2,7 @@ import React from 'react'
 import { Properties } from 'csstype'
 import { detect } from 'detect-browser'
 import { style as jss } from 'typestyle'
+import classnames from 'classnames'
 import {
   Alignment,
   decodeAlignment,
@@ -87,7 +88,7 @@ export default function Container(props: Container) {
 
         return (
           <DirectionContext.Provider value="row">
-            <div className={className ? className + ' ' : '' + classname} debug-label="Container" {...restProps}>
+            <div className={classnames(classname, className)} debug-label="Container" {...restProps}>
               {only(children)}
             </div>
           </DirectionContext.Provider>

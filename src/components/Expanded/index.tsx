@@ -1,5 +1,6 @@
 import React from 'react'
 import { style as jss } from 'typestyle'
+import classnames from 'classnames'
 import { only } from '../../utils'
 
 export type ExpandedProps = {
@@ -17,7 +18,7 @@ export default function Expanded({ className = '', flex = 1, children, ...restPr
   })
 
   return (
-    <div debug-label="Expanded" className={className + ' ' + classname} {...restProps}>
+    <div debug-label="Expanded" className={classnames(classname, className)} {...restProps}>
       {only(children)}
     </div>
   )

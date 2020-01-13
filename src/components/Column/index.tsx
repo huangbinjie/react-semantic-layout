@@ -1,11 +1,11 @@
 import React from 'react'
 import { style as jss } from 'typestyle'
-import { Overflow, MainAxisSize, DirectionContext } from '../../style'
+import classnames from 'classnames'
+import { MainAxisSize, DirectionContext } from '../../style'
 
 export type ColumnProps = {
   className?: string
   mainAxisSize?: MainAxisSize
-  overflow?: Overflow
   style?: React.CSSProperties
 }
 
@@ -23,7 +23,7 @@ export default function Column({ className = '', mainAxisSize = 'max', children,
 
   return (
     <DirectionContext.Provider value="column">
-      <div debug-label="Column" className={className + ' ' + classname} {...restProps}>{children}</div>
+      <div debug-label="Column" className={classnames(classname, className)} {...restProps}>{children}</div>
     </DirectionContext.Provider>
   )
 }

@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react'
 import { style as jss } from 'typestyle'
+import classnames from 'classnames'
 
 export type CenterProps = {
   className?: string
@@ -19,7 +20,7 @@ export default function Center({ className = '', children, ...restProps }: Cente
   return (
     <div
       debug-label="Center"
-      className={className + ' ' + classname}
+      className={classnames(classname, className)}
       {...restProps}
     >
       {children}

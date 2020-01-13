@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import { style as jss } from 'typestyle'
+import classnames from 'classnames'
 import { only } from '../../utils'
 
 export type PositionedProps = {
@@ -21,7 +22,7 @@ export default function Positioned(props: PropsWithChildren<PositionedProps>) {
 
   return (
     <div
-      className={className + ' ' + classname}
+      className={classnames(classname, className)}
       debug-label="Positioned"
       {...restProps}
     >

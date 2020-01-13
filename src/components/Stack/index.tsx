@@ -1,5 +1,6 @@
 import React, { CSSProperties, ReactNode } from 'react'
 import { style as jss } from 'typestyle'
+import classnames from 'classnames'
 import Positioned from '../Positioned'
 
 export type StackProps = {
@@ -32,5 +33,5 @@ export default function Stack({ className = '', children, ...restProps }: StackP
     height
   })
 
-  return <div className={className + ' ' + classname} debug-label="Stack" {...restProps}>{children}</div>
+  return <div className={classnames(classname, className)} debug-label="Stack" {...restProps}>{children}</div>
 }

@@ -1,6 +1,6 @@
 {
   "name": "react-semantic-layout",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Semantic layout in React. Inspired by Flutter.",
   "main": "dist/index.js",
   "scripts": {
@@ -27,12 +27,14 @@
   },
   "homepage": "https://github.com/huangbinjie/react-semantic-layout#readme",
   "devDependencies": {
+    "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.11",
     "docz": "^2.2.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "csstype": "^2.6.7",
     "detect-browser": "^4.8.0",
     "typestyle": "^2.0.4"
