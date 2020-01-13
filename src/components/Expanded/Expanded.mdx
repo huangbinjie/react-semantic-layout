@@ -1,0 +1,37 @@
+---
+name: Expanded
+menu: components
+---
+
+import { Playground, Props } from 'docz'
+import Container from '../Container'
+import Row from '../Row'
+import Center from '../Center'
+import Expanded from './'
+
+## Expanded
+
+一个会自动占满 `Row`, `Column`可用空间的组件。等价于 `flex: 1`
+
+### Basic
+
+<Playground>
+  <Container width="100%">
+    <Row>
+      <Container width="100px" height="100px" color="#ececec">
+        <Center>居中</Center>
+      </Container>
+      <Expanded style={{background: "coral"}}>
+        <Center>
+          <Container width="100px" height="100px" color="blue">
+            <Center style={{color: "#fff"}}>居中</Center>
+          </Container>
+        </Center>
+      </Expanded>
+    </Row>
+  </Container>
+</Playground>
+
+## Props
+
+<Props of={Expanded} />

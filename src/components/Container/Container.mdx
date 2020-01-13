@@ -1,0 +1,66 @@
+---
+name: Container
+menu: components
+---
+
+import { Playground, Props } from 'docz'
+import Container from '../Container'
+
+## Container
+
+容器。基础组件，提供各种布局效果。只能传一个子组件。
+
+有子组件的时候，Container 会收缩紧贴子组件的高宽。没有子组件的时候，Container 会尽可能的大以占满父容器。
+
+> 内部使用 flex 布局，搭配其他元素使用的时候需注意。
+
+## 不同与 flutter 的点
+
+个人觉得前端的实现需要结合前端的场景和实现难度和用户感受，不需要可以的照抄 flutter，所以总有一些不太一样的地方。
+
+- 约束的生效方式受限于前端实现，只能对自己约束，而不是子组件。
+- 为使 Container 能更胜任前端的日常工作，增加了类似 overflow 的属性。
+
+## Usage
+
+### Basic
+
+<Playground>
+  <Container width="100px" height="100px" color="#ececec">
+    展示一个方块
+  </Container>
+</Playground>
+
+### 有子组件
+
+有子组件的时候， Container 会紧贴子组件。
+
+<Playground>
+  <Container color="#ececec">
+    展示一个方块
+  </Container>
+</Playground>
+
+### 没有子组件
+
+没有子组件的时候，Container 会尽可能的大。
+
+<Playground>
+  <Container width="100px" height="100px">
+    <Container color="#ececec"></Container>
+  </Container>
+</Playground>
+
+### 约束
+
+约束只对组件本身有效。
+
+<Playground>
+  <Container constraints={{maxWidth: '100px', maxHeight: '100px'}} width="200px" height="200px" color="#ececec">
+    100 的方块
+  </Container>
+</Playground>
+
+## Props
+
+<Props of={Container} />

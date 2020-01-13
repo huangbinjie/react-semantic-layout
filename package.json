@@ -1,0 +1,40 @@
+{
+  "name": "react-semantic-layout",
+  "version": "0.0.2",
+  "description": "Semantic layout in React. Inspired by Flutter.",
+  "main": "dist/index.js",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build",
+    "docz:serve": "docz build && docz serve",
+    "build": "rm -fr dist && tsc",
+    "prepublishOnly": "build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangbinjie/react-semantic-layout.git"
+  },
+  "keywords": [
+    "react",
+    "layout"
+  ],
+  "author": "corol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huangbinjie/react-semantic-layout/issues"
+  },
+  "homepage": "https://github.com/huangbinjie/react-semantic-layout#readme",
+  "devDependencies": {
+    "@types/react": "^16.9.11",
+    "docz": "^2.2.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "dependencies": {
+    "csstype": "^2.6.7",
+    "detect-browser": "^4.8.0",
+    "typestyle": "^2.0.4"
+  }
+}
