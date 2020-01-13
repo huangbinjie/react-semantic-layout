@@ -1,7 +1,7 @@
 import React from 'react'
 import css from 'csstype'
 
-export type Alignment = 'start' | 'center' | 'end' | 'between'
+export type Alignment = 'start' | 'center' | 'end' | 'between' | 'stretch'
 
 export type Overflow = 'visible' | 'scroll' | 'hidden' | 'auto'
 
@@ -21,6 +21,8 @@ export function decodeAlignment(alignment: Alignment) {
       return 'flex-end'
     case 'between':
       return 'space-between'
+    case 'stretch':
+      return 'stretch'
     default:
       return 'unset'
   }

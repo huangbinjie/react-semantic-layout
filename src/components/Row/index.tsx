@@ -1,13 +1,13 @@
 import React from 'react'
 import { style as jss } from 'typestyle'
 import classnames from 'classnames'
-
-import { Overflow, MainAxisSize, DirectionContext } from '../../style'
+import { MainAxisSize, DirectionContext, Alignment, decodeAlignment } from '../../style'
 
 export type RowProps = {
   className?: string
+  mainAxisAlignment?: Alignment
+  crossAxisAlignment?: Alignment
   mainAxisSize?: MainAxisSize
-  overflow?: Overflow
   style?: React.CSSProperties
 }
 
@@ -16,10 +16,12 @@ export type RowProps = {
  * 高度是最高的子组件的高度。
  * 宽度默认 mainAxisSize='max'
  */
-export default function Row({ className = '', mainAxisSize = 'max', children, ...restProps }: React.PropsWithChildren<RowProps>) {
+export default function Row({ className = '', crossAxisAlignment = 'start', mainAxisAlignment = 'start', mainAxisSize = 'max', children, ...restProps }: React.PropsWithChildren<RowProps>) {
   const classname = jss({
     display: 'flex',
     flexDirection: 'row',
+    alignItems: decodeAlignment(crossAxisAlignment),
+    justifyContent: decodeAlignment(mainAxisAlignment),
     width: decodeMainAxisSize(mainAxisSize)
   })
 

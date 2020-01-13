@@ -1,10 +1,12 @@
 import React from 'react'
 import { style as jss } from 'typestyle'
 import classnames from 'classnames'
-import { MainAxisSize, DirectionContext } from '../../style'
+import { MainAxisSize, DirectionContext, Alignment, decodeAlignment } from '../../style'
 
 export type ColumnProps = {
   className?: string
+  mainAxisAlignment?: Alignment
+  crossAxisAlignment?: Alignment
   mainAxisSize?: MainAxisSize
   style?: React.CSSProperties
 }
@@ -13,10 +15,12 @@ export type ColumnProps = {
  * 上下布局的组件。
  * 高宽尽可能的大。
  */
-export default function Column({ className = '', mainAxisSize = 'max', children, ...restProps }: React.PropsWithChildren<ColumnProps>) {
+export default function Column({ className = '', crossAxisAlignment = 'start', mainAxisAlignment = 'start', mainAxisSize = 'max', children, ...restProps }: React.PropsWithChildren<ColumnProps>) {
   const classname = jss({
     display: 'flex',
     flexDirection: 'column',
+    alignItems: decodeAlignment(crossAxisAlignment),
+    justifyContent: decodeAlignment(mainAxisAlignment),
     width: "100%",
     height: decodeMainAxisSize(mainAxisSize)
   })
