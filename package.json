@@ -10,7 +10,7 @@
     "docz:build": "docz build",
     "docz:serve": "docz build && docz serve",
     "build": "rm -fr dist && tsc",
-    "prepublishOnly": "build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
