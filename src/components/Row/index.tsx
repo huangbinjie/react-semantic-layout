@@ -16,7 +16,7 @@ export type RowProps = {
  * 高度是最高的子组件的高度。
  * 宽度默认 mainAxisSize='max'
  */
-export default function Row({ className = '', crossAxisAlignment = 'start', mainAxisAlignment = 'start', mainAxisSize = 'max', children, ...restProps }: React.PropsWithChildren<RowProps>) {
+export default function Row({ className = '', crossAxisAlignment = 'normal', mainAxisAlignment = 'start', mainAxisSize = 'max', children, ...restProps }: React.PropsWithChildren<RowProps>) {
   const classname = jss({
     display: 'flex',
     flexDirection: 'row',

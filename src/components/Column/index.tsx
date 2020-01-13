@@ -15,7 +15,7 @@ export type ColumnProps = {
  * 上下布局的组件。
  * 高宽尽可能的大。
  */
-export default function Column({ className = '', crossAxisAlignment = 'start', mainAxisAlignment = 'start', mainAxisSize = 'max', children, ...restProps }: React.PropsWithChildren<ColumnProps>) {
+export default function Column({ className = '', crossAxisAlignment = 'normal', mainAxisAlignment = 'start', mainAxisSize = 'max', children, ...restProps }: React.PropsWithChildren<ColumnProps>) {
   const classname = jss({
     display: 'flex',
     flexDirection: 'column',
