@@ -17,7 +17,8 @@ export default function Column({ className = '', mainAxisSize = 'max', children,
   const classname = jss({
     display: 'flex',
     flexDirection: 'column',
-    width: decodeMainAxisSize(mainAxisSize)
+    width: "100%",
+    height: decodeMainAxisSize(mainAxisSize)
   })
 
   return (
