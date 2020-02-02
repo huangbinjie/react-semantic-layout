@@ -48,7 +48,7 @@ export default function Container(props: Container) {
     color,
     width,
     height,
-    alignment = 'start',
+    alignment,
     margin,
     padding,
     children,
@@ -61,28 +61,38 @@ export default function Container(props: Container) {
   return (
     <DirectionContext.Consumer>
       {(direction) => {
+        const isAvailableWidth = width && width !== 'auto'
+        const isAvailableHeight = height && height !== 'auto'
+
         // 有子组件会收缩，有高宽会收缩
         const shrinkWrap =
           children != void 0 ||
-          ((direction === 'row' && width && width !== 'auto') ||
-            (direction === 'column' && height && height !== 'auto'))
+          (direction === 'row' && isAvailableWidth) ||
+          (direction === 'column' && isAvailableHeight)
 
-        const classname = jss({
+        const flexStyle = {
           display: shrinkWrap ? (isIe ? '-ms-inline-flex' : 'inline-flex') : 'flex',
           flexGrow: shrinkWrap ? 0 : 1,
-          flexShrink: (width && width !== 'auto') || (height && height !== 'auto') ? 0 : 'unset',
+          flexShrink: isAvailableWidth || isAvailableHeight ? 0 : 1,
           justifyContent: decodeAlignment(alignment),
           // shrinkWrap height
           alignSelf: shrinkWrap ? 'baseline' : 'auto',
+        }
+
+        /// web 前端用户倾向于把 Container 当 div 使用。
+        /// 为了提升开发体验，不传 alignment 的时候 display 为 block，否则是 flex
+        const displayStyle = alignment ? flexStyle : {}
+
+        const classname = jss(displayStyle, {
           width,
           height,
           margin,
           padding,
-          overflow,
           maxWidth: maxWidth,
           maxHeight: maxHeight,
           minWidth: minWidth,
           minHeight: minHeight,
+          overflow,
           backgroundColor: color
         })
 

@@ -20,6 +20,7 @@ import Container from '../Container'
 
 - 约束的生效方式受限于前端实现，只能对自己约束，而不是子组件。
 - 为使 Container 能更胜任前端的日常工作，增加了类似 overflow 的属性。
+- Continer 的盒模型会在某些条件下发生改变，比如设置了 `alignment` 属性后会变成 `flex`。
 
 ## Usage
 
@@ -31,9 +32,37 @@ import Container from '../Container'
   </Container>
 </Playground>
 
+### 对齐
+
+alignment 属性可以指定对齐方式。
+
+> 当不传 alignment 属性的时候，Container 的盒模型是 `block`.
+当你尝试用 alignment 给 Container 设置对齐方式的时候，盒模型会变成 `flex`.
+
+#### start
+<Playground>
+  <Container alignment="start" width="100px" height="100px" color="#ececec">
+    文字
+  </Container>
+</Playground>
+
+#### center
+<Playground>
+  <Container alignment="center" width="100px" height="100px" color="#ececec">
+    文字
+  </Container>
+</Playground>
+
+#### end
+<Playground>
+  <Container alignment="end" width="100px" height="100px" color="#ececec">
+    文字
+  </Container>
+</Playground>
+
 ### 有子组件
 
-有子组件的时候， Container 会紧贴子组件。
+有子组件的时候， Container 会紧贴子组件。盒模型为 `inline-flex`
 
 <Playground>
   <Container color="#ececec">
