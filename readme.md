@@ -16,7 +16,7 @@
 
 https://flutter.dev/docs/development/ui/layout
 
-目前从 `style` 拆分出来的布局属性有：display，margin，padding，overflow等等，具体需要参考 `IContainer`。
+目前从 `style` 拆分出来的布局属性有：display，margin，padding，overflow等等。
 
 ### 约束(Constraint)
 
