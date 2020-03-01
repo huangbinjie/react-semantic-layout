@@ -10,6 +10,8 @@
     "docz:build": "docz build",
     "docz:serve": "docz build && docz serve",
     "build": "rm -fr dist && tsc",
+    "travis:script": "npm test",
+    "travis:before-script": "yarn",
     "prepublishOnly": "npm run build"
   },
   "repository": {

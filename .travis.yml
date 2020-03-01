@@ -1,0 +1,14 @@
+cache:
+  directories:
+    - node_modules
+    - .docz
+branches:
+  only:
+    - master
+language: node_js
+node_js:
+  - 11
+before_install:
+  - export REPOROOT=$TRAVIS_BUILD_DIR
+before_script:
+  - source ./travis.sh

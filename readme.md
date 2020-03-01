@@ -1,5 +1,7 @@
 # react-semantic-layout(beta)
 
+[![Build Status](https://travis-ci.com/huangbinjie/react-semantic-layout.svg?branch=master)](https://travis-ci.com/huangbinjie/react-semantic-layout)
+
 一套布局组件，灵感来自 flutter，可以按照组件同名去 flutter 搜索相同的组件。
 
 ## Motivation
