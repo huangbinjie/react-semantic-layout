@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expanded basic 1`] = `
+<div
+  className="f1ywse8b"
+  debug-label="Expanded"
+>
+  empty content
+</div>
+`;

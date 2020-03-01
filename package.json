@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "type-check": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "docz:dev": "docz dev",
     "docz:build": "docz build",
     "docz:serve": "docz build && docz serve",
@@ -28,10 +28,15 @@
   "homepage": "https://github.com/huangbinjie/react-semantic-layout#readme",
   "devDependencies": {
     "@types/classnames": "^2.2.9",
+    "@types/jest": "^25.1.3",
     "@types/react": "^16.9.11",
+    "@types/react-test-renderer": "^16.9.2",
     "docz": "^2.2.0",
+    "jest": "^25.1.0",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "react-test-renderer": "^16.13.0",
+    "ts-jest": "^25.2.1"
   },
   "dependencies": {
     "classnames": "^2.2.6",

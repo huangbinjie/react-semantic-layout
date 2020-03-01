@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Center basic 1`] = `
+<div
+  className="fnlk30n"
+  debug-label="Center"
+>
+  empty content
+</div>
+`;

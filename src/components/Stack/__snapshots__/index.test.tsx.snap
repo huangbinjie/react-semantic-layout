@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stack basic 1`] = `
+<div
+  className="fqub0h7"
+  debug-label="Stack"
+>
+  empty content
+</div>
+`;
