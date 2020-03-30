@@ -5,6 +5,8 @@ menu: components
 
 import { Playground, Props } from 'docz'
 import Container from '../Container'
+import Row from '../Row'
+import Expanded from '../Expanded'
 import Column from '../Column'
 import Center from '../Center'
 
@@ -12,7 +14,7 @@ import Center from '../Center'
 
 提供垂直布局的组件。等价于 `flex-direction: column`
 
-### Basic
+## 使用
 
 <Playground>
   <Column>
@@ -23,6 +25,26 @@ import Center from '../Center'
       <Center style={{color: "#fff"}}>居中</Center>
     </Container>
   </Column>
+</Playground>
+
+### 上下左右布局
+
+<Playground>
+  <Container height="500px">
+    <Column>
+      <Container>
+        <Center>Navbar</Center>
+      </Container>
+      <Row crossAxisSize="max">
+        <Container width="100px" height="100%">
+          <Center>Sidebar</Center>
+        </Container>
+        <Expanded>
+          <Center>Main</Center>
+        </Expanded>
+      </Row>
+    </Column>
+  </Container>
 </Playground>
 
 ## Props

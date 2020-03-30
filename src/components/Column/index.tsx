@@ -1,41 +1,54 @@
 import React from 'react'
 import { style as jss } from 'typestyle'
 import classnames from 'classnames'
-import { MainAxisSize, DirectionContext, Alignment, decodeAlignment } from '../../style'
+import {
+  AxisSize,
+  DirectionContext,
+  Alignment,
+  decodeAlignment,
+  decodeAxisSize
+} from '../../style'
 
 export type ColumnProps = {
   className?: string
   mainAxisAlignment?: Alignment
   crossAxisAlignment?: Alignment
-  mainAxisSize?: MainAxisSize
+  mainAxisSize?: AxisSize
+  crossAxisSize?: AxisSize
   style?: React.CSSProperties
 }
 
 /**
  * 上下布局的组件。
- * 高宽尽可能的大。
+ * 高宽默认最大。
  */
-export default function Column({ className = '', crossAxisAlignment = 'normal', mainAxisAlignment = 'start', mainAxisSize = 'max', children, ...restProps }: React.PropsWithChildren<ColumnProps>) {
+export default function Column({
+  className = '',
+  crossAxisAlignment = 'normal',
+  mainAxisAlignment = 'start',
+  mainAxisSize = 'max',
+  crossAxisSize = 'max',
+  children,
+  ...restProps
+}: React.PropsWithChildren<ColumnProps>) {
   const classname = jss({
     display: 'flex',
     flexDirection: 'column',
     alignItems: decodeAlignment(crossAxisAlignment),
     justifyContent: decodeAlignment(mainAxisAlignment),
-    width: "100%",
-    height: decodeMainAxisSize(mainAxisSize)
+    width: '100%',
+    height: decodeAxisSize(mainAxisSize)
   })
 
   return (
     <DirectionContext.Provider value="column">
-      <div debug-label="Column" className={classnames(classname, className)} {...restProps}>{children}</div>
+      <div
+        debug-label="Column"
+        className={classnames(classname, className)}
+        {...restProps}
+      >
+        {children}
+      </div>
     </DirectionContext.Provider>
   )
-}
-
-export function decodeMainAxisSize(size: MainAxisSize) {
-  if (size === 'min') {
-    return 'auto'
-  }
-
-  return '100%'
 }

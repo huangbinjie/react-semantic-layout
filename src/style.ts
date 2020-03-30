@@ -9,7 +9,15 @@ export type Direction = 'row' | 'column'
 
 export const DirectionContext = React.createContext<Direction>('row')
 
-export type MainAxisSize = 'max' | 'min'
+export type AxisSize = 'max' | 'min'
+
+export function decodeAxisSize(size: AxisSize) {
+  if (size === 'min') {
+    return 'auto'
+  }
+
+  return '100%'
+}
 
 export function decodeAlignment(alignment: Alignment) {
   switch (alignment) {
