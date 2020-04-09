@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Properties } from 'csstype'
 import { detect } from 'detect-browser'
 import { style as jss } from 'typestyle'
@@ -44,7 +44,7 @@ export interface Container extends LayoutStyle {
 export default function Container(props: Container) {
   const {
     className,
-    constraints = { maxWidth: 'none', maxHeight: 'none', minWidth: 'auto', minHeight: 'auto' },
+    constraints = {},
     color,
     width,
     height,
@@ -57,53 +57,55 @@ export default function Container(props: Container) {
   } = props
 
   const { maxWidth = 'none', maxHeight = 'none', minWidth = 'auto', minHeight = 'auto' } = constraints
+  const direction = useContext(DirectionContext)
+  const isAvailableWidth = width && width !== 'auto'
+  const isAvailableHeight = height && height !== 'auto'
+
+  // 有子组件会收缩，有高宽会收缩
+  const shrinkWrap =
+    children != void 0 ||
+    (direction === 'row' && isAvailableWidth) ||
+    (direction === 'column' && isAvailableHeight)
+
+  let displayStyle: object
+
+  if (alignment) {
+    const flexStyle = {
+      display: shrinkWrap ? (isIe ? '-ms-inline-flex' : 'inline-flex') : 'flex',
+      flexGrow: shrinkWrap ? 0 : 1,
+      flexShrink: isAvailableWidth || isAvailableHeight ? 0 : 1,
+      justifyContent: decodeAlignment(alignment),
+      // shrinkWrap height
+      alignSelf: shrinkWrap ? 'baseline' : 'auto',
+    }
+
+    displayStyle = flexStyle
+  } else {
+    const blockStyle = {
+      height: shrinkWrap ? 'auto' : '100%'
+    }
+
+    displayStyle = blockStyle
+  }
+
+  const classname = jss(displayStyle, {
+    width,
+    height,
+    margin,
+    padding,
+    maxWidth: maxWidth,
+    maxHeight: maxHeight,
+    minWidth: minWidth,
+    minHeight: minHeight,
+    overflow,
+    backgroundColor: color
+  })
 
   return (
-    <DirectionContext.Consumer>
-      {(direction) => {
-        const isAvailableWidth = width && width !== 'auto'
-        const isAvailableHeight = height && height !== 'auto'
-
-        // 有子组件会收缩，有高宽会收缩
-        const shrinkWrap =
-          children != void 0 ||
-          (direction === 'row' && isAvailableWidth) ||
-          (direction === 'column' && isAvailableHeight)
-
-        const flexStyle = {
-          display: shrinkWrap ? (isIe ? '-ms-inline-flex' : 'inline-flex') : 'flex',
-          flexGrow: shrinkWrap ? 0 : 1,
-          flexShrink: isAvailableWidth || isAvailableHeight ? 0 : 1,
-          justifyContent: decodeAlignment(alignment),
-          // shrinkWrap height
-          alignSelf: shrinkWrap ? 'baseline' : 'auto',
-        }
-
-        /// web 前端用户倾向于把 Container 当 div 使用。
-        /// 为了提升开发体验，不传 alignment 的时候 display 为 block，否则是 flex
-        const displayStyle = alignment ? flexStyle : {}
-
-        const classname = jss(displayStyle, {
-          width,
-          height,
-          margin,
-          padding,
-          maxWidth: maxWidth,
-          maxHeight: maxHeight,
-          minWidth: minWidth,
-          minHeight: minHeight,
-          overflow,
-          backgroundColor: color
-        })
-
-        return (
-          <DirectionContext.Provider value="row">
-            <div className={classnames(classname, className)} debug-label="Container" {...restProps}>
-              {only(children)}
-            </div>
-          </DirectionContext.Provider>
-        )
-      }}
-    </DirectionContext.Consumer>
+    <DirectionContext.Provider value="row">
+      <div className={classnames(classname, className)} debug-label="Container" {...restProps}>
+        {only(children)}
+      </div>
+    </DirectionContext.Provider>
   )
 }

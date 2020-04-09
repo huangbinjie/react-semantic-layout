@@ -10,8 +10,6 @@ import Container from '../Container'
 
 容器。基础组件，提供各种布局效果。只能传一个子组件。
 
-有子组件的时候，Container 会收缩紧贴子组件的高宽。没有子组件的时候，Container 会尽可能的大以占满父容器。
-
 > 内部使用 flex 布局，搭配其他元素使用的时候需注意。
 
 ## 不同与 flutter 的点
@@ -36,8 +34,7 @@ import Container from '../Container'
 
 alignment 属性可以指定对齐方式。
 
-> 当不传 alignment 属性的时候，Container 的盒模型是 `block`.
-当你尝试用 alignment 给 Container 设置对齐方式的时候，盒模型会变成 `flex`.
+> 这是一种妥协。web 前端用户倾向于把 Container 当 div 使用。当不传 alignment 属性的时候，Container 的盒模型是 `block`，否则是 `flex`.
 
 #### start
 <Playground>
@@ -62,7 +59,7 @@ alignment 属性可以指定对齐方式。
 
 ### 有子组件
 
-有子组件的时候， Container 会紧贴子组件。盒模型为 `inline-flex`
+有子组件的时候， Container 会紧贴子组件。
 
 <Playground>
   <Container color="#ececec">
