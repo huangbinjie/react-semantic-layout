@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { forwardRef, useContext } from 'react'
 import { Properties } from 'csstype'
 import { detect } from 'detect-browser'
 import { style as jss } from 'typestyle'
@@ -41,7 +41,7 @@ export interface Container extends LayoutStyle {
  *
  * @param props
  */
-export default function Container(props: Container) {
+export default forwardRef<HTMLDivElement, Container>(function Container(props, ref) {
   const {
     className,
     constraints = {},
@@ -103,9 +103,9 @@ export default function Container(props: Container) {
 
   return (
     <DirectionContext.Provider value="row">
-      <div className={classnames(classname, className)} debug-label="Container" {...restProps}>
+      <div ref={ref} className={classnames(classname, className)} debug-label="Container" {...restProps}>
         {only(children)}
       </div>
     </DirectionContext.Provider>
   )
-}
+})

@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import React, { forwardRef, PropsWithChildren } from 'react'
 import { style as jss } from 'typestyle'
 import classnames from 'classnames'
 import { only } from '../../utils'
@@ -13,7 +13,7 @@ export type PositionedProps = {
   style?: React.CSSProperties
 }
 
-export default function Positioned(props: PropsWithChildren<PositionedProps>) {
+export default forwardRef<HTMLDivElement, PropsWithChildren<PositionedProps>>(function Positioned(props, ref) {
   const { className = '', children, top, right, left, bottom, zIndex, ...restProps } = props
 
   const classname = jss({
@@ -22,6 +22,7 @@ export default function Positioned(props: PropsWithChildren<PositionedProps>) {
 
   return (
     <div
+      ref={ref}
       className={classnames(classname, className)}
       debug-label="Positioned"
       {...restProps}
@@ -29,4 +30,4 @@ export default function Positioned(props: PropsWithChildren<PositionedProps>) {
       {only(children)}
     </div>
   )
-}
+})
