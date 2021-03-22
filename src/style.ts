@@ -41,10 +41,6 @@ export type LayoutStyleKey = "width" | "height" | "margin" | "padding" | "color"
 
 export type LayoutStyle = Pick<css.Properties, LayoutStyleKey>
 
-export type ConstraintStyle = {
-
-}
-
 export type StyleKey = Exclude<keyof css.Properties, LayoutStyleKey>
 
 export type Style = Pick<css.Properties, StyleKey>

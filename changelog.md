@@ -10,3 +10,7 @@
 ## 0.1.0
 
 + 给直接包裹业务方内容的组件 `Container` 和 `Positioned` 增加 ref
+
+## 0.1.1
+
++ `Container` 的 `margin` 和 `padding` 增加 `object` 支持

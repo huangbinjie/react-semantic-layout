@@ -13,6 +13,8 @@ import Expanded from './'
 
 一个会自动占满 `Row`, `Column`可用空间的组件。等价于 `flex: 1`
 
+## Usage
+
 ### Basic
 
 <Playground>
@@ -27,6 +29,22 @@ import Expanded from './'
             <Center style={{color: "#fff"}}>居中</Center>
           </Container>
         </Center>
+      </Expanded>
+    </Row>
+  </Container>
+</Playground>
+
+### 实现左右平分，中间 20 间距
+
+<Playground>
+  <Container width="100%">
+    <Row>
+      <Expanded style={{background: "coral"}}>
+        <Center>左边</Center>
+      </Expanded>
+      <Container width="20px" color="red">间距</Container>
+      <Expanded style={{background: "coral"}}>
+        <Center>右边</Center>
       </Expanded>
     </Row>
   </Container>

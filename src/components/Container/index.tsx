@@ -12,36 +12,55 @@ import {
   DirectionContext
 } from '../../style'
 import { Constraint } from '../../constraint'
-import { only } from '../../utils'
+import { only, Omit } from '../../utils'
 
 const browser = detect()
 const isIe = browser && browser.name === 'ie'
 
-export interface Container extends LayoutStyle {
+export type ContainerGap = {
+  top?: 0 | string
+  left?: 0 | string
+  bottom?: 0 | string
+  right?: 0 | string
+}
+
+export interface ContainerProps extends Omit<LayoutStyle, 'margin' | 'padding'> {
+  /**
+   * 指定 Container 子节点的对其方式
+   * 
+   * 注意，Container 默认为 Block 布局，指定了该属性则会变成 Flex 布局
+   */
   alignment?: Alignment
   width?: string
   height?: string
-  margin?: string
-  padding?: string
-  // 背景色
+  margin?: string | ContainerGap
+  padding?: string | ContainerGap
+  /**
+   * 背景色
+   */
   color?: string
   className?: string
   children?: React.ReactNode
+  /**
+   * 约束
+   * 
+   * 对自己生效
+   */
   constraints?: Constraint
   overflow?: Overflow
   style?: Omit<Properties, LayoutStyleKey | keyof Constraint>
 }
 
 /**
- * 容器组件，提供丰富的布局效果。
+ * 容器组件，提供丰富的布局效果
+ * 
  * to honor the `width`, `height`,
  * to shrink to the children,
  * to be as small as possible.
  * 
- *
  * @param props
  */
-export default forwardRef<HTMLDivElement, Container>(function Container(props, ref) {
+export default forwardRef<HTMLDivElement, ContainerProps>(function Container(props, ref) {
   const {
     className,
     constraints = {},
@@ -91,8 +110,8 @@ export default forwardRef<HTMLDivElement, Container>(function Container(props, r
   const classname = jss(displayStyle, {
     width,
     height,
-    margin,
-    padding,
+    margin: decodeGap(margin),
+    padding: decodeGap(padding),
     maxWidth: maxWidth,
     maxHeight: maxHeight,
     minWidth: minWidth,
@@ -109,3 +128,12 @@ export default forwardRef<HTMLDivElement, Container>(function Container(props, r
     </DirectionContext.Provider>
   )
 })
+
+function decodeGap(margin?: string | ContainerGap): string | undefined {
+  if (margin == null) return undefined
+  if (typeof margin === 'string') {
+    return margin
+  }
+  const { top = 0, right = 0, bottom = 0, left = 0 } = margin
+  return `${top} ${right} ${bottom} ${left}`
+}

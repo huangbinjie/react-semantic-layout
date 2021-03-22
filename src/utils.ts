@@ -8,3 +8,5 @@ export function only(child: React.ReactNode) {
 
   return child
 }
+
+export type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>
