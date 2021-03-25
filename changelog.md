@@ -14,3 +14,7 @@
 ## 0.1.1
 
 + `Container` 的 `margin` 和 `padding` 增加 `object` 支持
+
+## 0.1.2
+
++ `Expanded` 的 `overflow` 属性去掉
