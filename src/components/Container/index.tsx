@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from 'react'
+import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import { Properties } from 'csstype'
 import { detect } from 'detect-browser'
 import { style as jss } from 'typestyle'
@@ -24,7 +24,7 @@ export type ContainerGap = {
   right?: 0 | string
 }
 
-export interface ContainerProps extends Omit<LayoutStyle, 'margin' | 'padding'> {
+export interface ContainerProps extends Omit<LayoutStyle, 'margin' | 'padding'>, HTMLAttributes<HTMLDivElement> {
   /**
    * 指定 Container 子节点的对其方式
    * 
