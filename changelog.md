@@ -22,4 +22,7 @@
 ## 0.1.3
 
 + `Container`: support click event
- 
+
+## 0.1.4
+
++ export necessary types from `index.ts`
