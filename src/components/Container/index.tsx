@@ -35,10 +35,6 @@ export interface ContainerProps extends Omit<LayoutStyle, 'margin' | 'padding'>,
   height?: string
   margin?: string | ContainerGap
   padding?: string | ContainerGap
-  /**
-   * 背景色
-   */
-  color?: string
   className?: string
   children?: React.ReactNode
   /**

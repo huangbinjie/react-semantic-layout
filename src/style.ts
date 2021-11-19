@@ -37,7 +37,7 @@ export function decodeAlignment(alignment: Alignment) {
   }
 }
 
-export type LayoutStyleKey = "width" | "height" | "margin" | "padding" | "color"
+export type LayoutStyleKey = "width" | "height" | "margin" | "padding"
 
 export type LayoutStyle = Pick<css.Properties, LayoutStyleKey>
 
