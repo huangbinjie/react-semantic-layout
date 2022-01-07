@@ -26,3 +26,7 @@
 ## 0.1.4
 
 + export necessary types from `index.ts`
+
+## 0.1.5
+
++ 修复 `Expand` 可能会因为内容过长导致没有遵守 `flex: 1` 的宽度
