@@ -12,6 +12,10 @@ jobs:
     - uses: butlerlogic/action-autotag@stable
       with:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    - name: Install node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16
     - name: Project relative
       run: |
         npm install
