@@ -1,0 +1,91 @@
+---
+name: Wrap
+menu: components
+---
+
+import { Playground, Props } from 'docz'
+import Container from '../Container'
+import Wrap from '../Wrap'
+import Center from '../Center'
+
+## Wrap
+
+提供灵活的换行布局的组件。使用 flexbox + flex-wrap 实现自适应的换行布局。
+
+Wrap 组件专注于提供简单灵活的换行布局，支持自定义间距和对齐方式。如果需要固定的网格布局，请使用 Grid 组件。
+
+### 基本使用
+
+默认支持自动换行：
+
+<Playground>
+  <Wrap mainAxisGap={10} crossAxisGap={5}>
+    <Container width="100px" height="50px" color="#ececec">
+      <Center>Item 1</Center>
+    </Container>
+    <Container width="100px" height="50px" color="coral">
+      <Center>Item 2</Center>
+    </Container>
+    <Container width="100px" height="50px" color="blue">
+      <Center style={{ color: '#fff' }}>Item 3</Center>
+    </Container>
+    <Container width="100px" height="50px" color="green">
+      <Center style={{ color: '#fff' }}>Item 4</Center>
+    </Container>  </Wrap>
+</Playground>
+
+### 自定义间距
+
+支持设置不同的主轴和交叉轴间距：
+
+<Playground>
+  <Container width="300px">
+    <Wrap mainAxisGap={20} crossAxisGap={15}>
+      <Container width="100px" height="50px" color="#ececec">
+        <Center>Item 1</Center>
+      </Container>
+      <Container width="100px" height="50px" color="coral">
+        <Center>Item 2</Center>
+      </Container>
+      <Container width="100px" height="50px" color="blue">
+        <Center style={{ color: '#fff' }}>Item 3</Center>
+      </Container>
+      <Container width="100px" height="50px" color="green">
+        <Center style={{ color: '#fff' }}>Item 4</Center>
+      </Container>
+      <Container width="100px" height="50px" color="orange">
+        <Center>Item 5</Center>
+      </Container>
+    </Wrap>
+  </Container>
+</Playground>
+
+### 对齐方式
+
+支持水平和垂直对齐：
+
+<Playground>
+  <Container height="200px" color="#f0f0f0">
+    <Wrap 
+      mainAxisAlignment="center" 
+      crossAxisAlignment="center"
+      crossAxisSize="max"
+      mainAxisGap={10}
+      crossAxisGap={10}
+    >
+      <Container width="80px" height="40px" color="coral">
+        <Center>1</Center>
+      </Container>
+      <Container width="80px" height="40px" color="blue">
+        <Center style={{ color: '#fff' }}>2</Center>
+      </Container>
+      <Container width="80px" height="40px" color="green">
+        <Center style={{ color: '#fff' }}>3</Center>
+      </Container>
+    </Wrap>
+  </Container>
+</Playground>
+
+## Props
+
+<Props of={Wrap} />

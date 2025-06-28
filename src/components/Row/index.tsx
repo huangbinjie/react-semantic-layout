@@ -6,7 +6,7 @@ import {
   DirectionContext,
   Alignment,
   decodeAlignment,
-  decodeAxisSize
+  decodeAxisSize,
 } from '../../style'
 
 export type RowProps = {
@@ -15,6 +15,7 @@ export type RowProps = {
   crossAxisAlignment?: Alignment
   mainAxisSize?: AxisSize
   crossAxisSize?: AxisSize
+  gap?: number | string
   style?: React.CSSProperties
 }
 
@@ -30,6 +31,7 @@ export default function Row({
   mainAxisAlignment = 'start',
   mainAxisSize = 'max',
   crossAxisSize = 'min',
+  gap = 0,
   children,
   ...restProps
 }: React.PropsWithChildren<RowProps>) {
@@ -39,7 +41,8 @@ export default function Row({
     alignItems: decodeAlignment(crossAxisAlignment),
     justifyContent: decodeAlignment(mainAxisAlignment),
     width: decodeAxisSize(mainAxisSize),
-    height: decodeAxisSize(crossAxisSize)
+    height: decodeAxisSize(crossAxisSize),
+    gap: typeof gap === 'number' ? `${gap}px` : gap,
   })
 
   return (

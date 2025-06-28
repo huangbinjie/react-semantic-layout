@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Row basic 1`] = `
+exports[`Wrap basic 1`] = `
 <div
-  className="f1ybouz2"
-  debug-label="Row"
+  className="f1pg3ywt"
+  debug-label="Wrap"
 >
   empty content
 </div>

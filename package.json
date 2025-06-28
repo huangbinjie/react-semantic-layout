@@ -1,6 +1,6 @@
 {
   "name": "react-semantic-layout",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Semantic layout in React. Inspired by Flutter.",
   "main": "dist/index.js",
   "scripts": {

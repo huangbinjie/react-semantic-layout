@@ -1,0 +1,190 @@
+---
+name: Grid
+menu: components
+description: 网格布局组件，提供灵活的网格排列功能
+---
+
+import { Playground, Props } from 'docz'
+import Grid from './index'
+import Container from '../Container'
+import Center from '../Center'
+
+# Grid
+
+Grid 组件提供了网格布局功能，支持通过指定行数和列数来创建规整的网格布局。当没有指定网格尺寸时，会回退到 flex 布局。
+
+## 基础用法
+
+<Playground>
+  <Grid columns={3} mainAxisGap={16} crossAxisGap={16}>
+    <Container padding="20px" color="#f0f0f0">
+      <Center>1</Center>
+    </Container>
+    <Container padding="20px" color="#f0f0f0">
+      <Center>2</Center>
+    </Container>
+    <Container padding="20px" color="#f0f0f0">
+      <Center>3</Center>
+    </Container>
+    <Container padding="20px" color="#f0f0f0">
+      <Center>4</Center>
+    </Container>
+    <Container padding="20px" color="#f0f0f0">
+      <Center>5</Center>
+    </Container>
+    <Container padding="20px" color="#f0f0f0">
+      <Center>6</Center>
+    </Container>
+  </Grid>
+</Playground>
+
+## 指定列数
+
+通过 `columns` 属性可以指定网格的列数：
+
+<Playground>
+  <Grid columns={4} mainAxisGap={12} crossAxisGap={12}>
+    {Array.from({ length: 8 }, (_, i) => (
+      <Container
+        key={i}
+        padding="15px"
+        color="#e6f3ff"
+        style={{ border: '1px solid #91d5ff' }}
+      >
+        <Center>Item {i + 1}</Center>
+      </Container>
+    ))}
+  </Grid>
+</Playground>
+
+## 指定行数
+
+通过 `rows` 属性可以指定网格的行数：
+
+<Playground>
+  <Grid rows={2} mainAxisGap={16} crossAxisGap={16}>
+    {Array.from({ length: 6 }, (_, i) => (
+      <Container
+        key={i}
+        padding="20px"
+        color="#fff2e6"
+        style={{ border: '1px solid #ffb366' }}
+      >
+        <Center>Item {i + 1}</Center>
+      </Container>
+    ))}
+  </Grid>
+</Playground>
+
+## 同时指定行数和列数
+
+可以同时指定行数和列数来创建固定尺寸的网格：
+
+<Playground>
+  <Grid rows={2} columns={3} mainAxisGap={16} crossAxisGap={16}>
+    {Array.from({ length: 6 }, (_, i) => (
+      <Container
+        key={i}
+        padding="20px"
+        color="#f6ffed"
+        style={{ border: '1px solid #95de64' }}
+      >
+        <Center>{i + 1}</Center>
+      </Container>
+    ))}
+  </Grid>
+</Playground>
+
+## 对齐方式
+
+支持主轴和交叉轴的对齐设置：
+
+<Playground>
+  <Container height="300px" style={{ border: '1px solid #ddd' }}>
+    <Grid
+      columns={2}
+      mainAxisAlignment="center"
+      crossAxisAlignment="center"
+      mainAxisGap={20}
+      crossAxisGap={20}
+      crossAxisSize="max"
+    >
+      <Container padding="20px" color="#ffeaa7">
+        <Center>1</Center>
+      </Container>
+      <Container padding="20px" color="#ffeaa7">
+        <Center>2</Center>
+      </Container>
+      <Container padding="20px" color="#ffeaa7">
+        <Center>3</Center>
+      </Container>
+      <Container padding="20px" color="#ffeaa7">
+        <Center>4</Center>
+      </Container>
+    </Grid>
+  </Container>
+</Playground>
+
+## 无网格尺寸（Flex 回退）
+
+当没有指定 `columns` 或 `rows` 时，Grid 组件会回退到 flex 布局：
+
+<Playground>
+  <Grid mainAxisGap={16} crossAxisGap={16}>
+    {Array.from({ length: 5 }, (_, i) => (
+      <Container
+        key={i}
+        padding="15px 25px"
+        color="#e6fffb"
+        style={{ border: '1px solid #87e8de' }}
+      >
+        <Center>Flex Item {i + 1}</Center>
+      </Container>
+    ))}
+  </Grid>
+</Playground>
+
+## 自定义间距
+
+支持不同的间距设置，可以使用数字（像素）或字符串：
+
+<Playground>
+  <div>
+    <h4>大间距</h4>    <Grid columns={3} mainAxisGap={32} crossAxisGap={24}>
+      {Array.from({ length: 6 }, (_, i) => (
+        <Container
+          key={i}
+          padding="15px"
+          color="#fff1f0"
+          style={{ border: '1px solid #ffaaa5' }}
+        >
+          <Center>{i + 1}</Center>
+        </Container>
+      ))}
+    </Grid>
+    <h4 style={{ marginTop: '32px' }}>使用 rem 单位</h4>    <Grid columns={4} mainAxisGap="1rem" crossAxisGap="0.5rem">
+      {Array.from({ length: 8 }, (_, i) => (
+        <Container
+          key={i}
+          padding="10px"
+          color="#f9f0ff"
+          style={{ border: '1px solid #d3adf7' }}
+        >
+          <Center>{i + 1}</Center>
+        </Container>
+      ))}
+    </Grid>
+  </div>
+</Playground>
+
+## Props
+
+<Props of={Grid} />
+
+## 使用场景
+
+- **产品展示网格**: 创建整齐的产品卡片网格
+- **图片画廊**: 按固定列数排列图片
+- **仪表板布局**: 创建规整的数据卡片网格
+- **表单布局**: 创建多列表单字段布局
+- **响应式网格**: 结合媒体查询实现响应式网格

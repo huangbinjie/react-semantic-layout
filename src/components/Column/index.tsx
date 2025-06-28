@@ -6,7 +6,7 @@ import {
   DirectionContext,
   Alignment,
   decodeAlignment,
-  decodeAxisSize
+  decodeAxisSize,
 } from '../../style'
 
 export type ColumnProps = {
@@ -15,6 +15,7 @@ export type ColumnProps = {
   crossAxisAlignment?: Alignment
   mainAxisSize?: AxisSize
   crossAxisSize?: AxisSize
+  gap?: number | string
   style?: React.CSSProperties
 }
 
@@ -28,6 +29,7 @@ export default function Column({
   mainAxisAlignment = 'start',
   mainAxisSize = 'max',
   crossAxisSize = 'max',
+  gap = 0,
   children,
   ...restProps
 }: React.PropsWithChildren<ColumnProps>) {
@@ -36,8 +38,9 @@ export default function Column({
     flexDirection: 'column',
     alignItems: decodeAlignment(crossAxisAlignment),
     justifyContent: decodeAlignment(mainAxisAlignment),
-    width: '100%',
-    height: decodeAxisSize(mainAxisSize)
+    width: decodeAxisSize(crossAxisSize),
+    gap: typeof gap === 'number' ? `${gap}px` : gap,
+    height: decodeAxisSize(mainAxisSize),
   })
 
   return (
